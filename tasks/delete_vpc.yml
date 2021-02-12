@@ -1,0 +1,15 @@
+---
+
+- name: "ensure vpc with named {{ vpc.name }} is destroyed"
+  ec2_vpc_net:
+    # Fixed values
+    state: absent
+    # Required values
+    name: "{{ vpc.name }}"
+    cidr_block: "{{ vpc.cidr }}"
+    # Optional values
+    region: "{{ vpc.region | default(aws_vpc_default_region | default(omit)) }}"
+    aws_access_key: "{{ lookup('ENV', 'AWS_ACCESS_KEY') | default(omit) }}"
+    aws_secret_key: "{{ lookup('ENV', 'AWS_SECRET_KEY') | default(omit) }}"
+    security_token: "{{ lookup('ENV', 'AWS_SECURITY_TOKEN') | default(omit) }}"
+    profile: "{{ aws_vpc_profile | default(omit) }}"

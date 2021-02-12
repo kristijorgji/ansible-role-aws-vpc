@@ -8,3 +8,11 @@
     loop_var: vpc
   with_items:
     - "{{ aws_vpc_vpcs }}"
+  when: aws_vpc_state == "present"
+
+- include_tasks: delete_vpc.yml
+  loop_control:
+    loop_var: vpc
+  with_items:
+    - "{{ aws_vpc_vpcs }}"
+  when: aws_vpc_state == "absent"

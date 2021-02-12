@@ -21,6 +21,7 @@ Additional variables that can be used (either as `host_vars`/`group_vars` or via
 |--------------------------|------------------------------|
 | `aws_vpc_profile`        | Boto profile name to be used |
 | `aws_vpc_default_region` | Default region to use        |
+| `aws_vpc_state` | Default is `present`, possible values: `present` or `absent`. absent deletes the resource        |
 
 
 ## Example definition
